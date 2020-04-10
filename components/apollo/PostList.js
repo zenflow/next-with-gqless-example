@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/react-hooks'
 import { NetworkStatus } from 'apollo-client'
 import gql from 'graphql-tag'
-import ErrorMessage from './ErrorMessage'
+import ErrorMessage from '../ErrorMessage'
 import PostUpvoter from './PostUpvoter'
 
 export const ALL_POSTS_QUERY = gql`
