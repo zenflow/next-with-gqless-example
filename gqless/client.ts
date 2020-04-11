@@ -23,6 +23,11 @@ const fetchQuery: QueryFetcher = async (query, variables) => {
 
   const json = await response.json();
 
+  if (json.errors && json.errors.length) {
+    console.error(`Query responded with ${json.errors.length} errors. Throwing first.`)
+    throw json.errors[0]
+  }
+
   return json;
 };
 

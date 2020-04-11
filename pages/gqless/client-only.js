@@ -1,10 +1,12 @@
-import {Suspense} from 'react' // don't need to use <SsrCompatibleSuspense/> since it's used inside <NoSsr/>
 import App from '../../components/App'
 import InfoBox from '../../components/InfoBox'
 import Header from '../../components/Header'
 import Submit from '../../components/gqless/Submit'
 import PostList from '../../components/gqless/PostList'
 import { NoSsr } from '../../lib/NoSsr'
+// Since <Suspense/> is used inside <NoSsr/>, it could be the normal <Suspense>,
+//   but we just use SsrCompatibleSuspense everywhere.
+import Suspense from '../../lib/SsrCompatibleSuspense'
 import { withGqless } from '../../lib/gqless'
 
 const ClientOnlyPage = props => (

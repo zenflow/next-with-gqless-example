@@ -14,12 +14,15 @@ const UPDATE_POST_MUTATION = `
 function PostUpvoter ({post}) {
   const {client} = useGqless()
 
+  // Access `post.id` so it's there when `upvotePost` is called
+  const {id} = post
+
   const upvotePost = () => {
     // make optimistic update:
     post.votes++
     // send mutation to server:
     client.fetchQuery(UPDATE_POST_MUTATION, {id: post.id, votes: post.votes})
-    // TODO: Should handle result from above, but Apollo example doesn't either so, meh
+    // Should handle result from above, but Apollo example doesn't either so, meh
   }
 
   return (
