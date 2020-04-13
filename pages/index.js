@@ -1,30 +1,28 @@
 import App from '../components/App'
 import Header from '../components/Header'
 import InfoBox from '../components/InfoBox'
+import ReactMarkdown from 'react-markdown'
+import rawReadme from '../README.md'
 
-const ExternalLink = (({href, children}) => (
-  <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>
-))
+const readme = rawReadme
+  .split(/\r?\n/g)
+  .slice(1) // remove heading on first line
+  .filter(line => !line.includes('Live demo')) // remove line with "Live demo" link
+  .join('\n')
 
 const HomePage = () => {
   return (
     <App>
       <Header />
       <InfoBox>
-        ℹ️ This app is an example of how to use {''}
-        <ExternalLink href="https://gqless.dev/">
-          gqless
-        </ExternalLink>
-        {' with '}
-        <ExternalLink href="https://nextjs.org/">
-          Next.js
-        </ExternalLink>.
-        It mirrors {''}
-        <ExternalLink href="https://github.com/zeit/next.js/tree/canary/examples/with-apollo">
-          the with-apollo Next.js example app
-        </ExternalLink>.
-        Apollo examples are included here for comparison.
+        <ReactMarkdown source={readme} linkTarget="_blank"/>
       </InfoBox>
+      <style jsx global>{`
+        code {
+          background-color: #EEE;
+          padding: 2px;
+        }
+      `}</style>
     </App>
   )
 }
