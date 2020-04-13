@@ -34,4 +34,4 @@ const ClientOnlyPage = props => (
   </App>
 )
 
-export default withGqless({ssr: false})(ClientOnlyPage)
+export default ClientOnlyPage

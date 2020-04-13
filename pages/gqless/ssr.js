@@ -29,4 +29,4 @@ const IndexPage = () => (
   </App>
 )
 
-export default withGqless({ssr: true})(IndexPage)
+export default withGqless()(IndexPage)
